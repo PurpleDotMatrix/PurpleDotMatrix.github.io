@@ -1,0 +1,319 @@
+<html><head>
+<title>Purple Dot Matrix - Official Artist Page</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #e6ccff;
+    overflow-x: hidden;
+    height: 100%;
+  }
+  canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    overflow: visible;
+  }
+  header {
+    text-align: center;
+    padding: 40px 0;
+  }
+  h1 {
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+  }
+  .tagline {
+    font-style: italic;
+    font-size: 1.2em;
+  }
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+  }
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .album-info {
+    text-align: center;
+    margin: 40px 0;
+  }
+  .album-cover {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    background-image: url('https://i.imgur.com/2biWPci.jpeg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(230, 204, 255, 0.5);
+  }
+  .buy-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .buy-button {
+    padding: 10px 20px;
+    background-color: #9933ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color
+  }
+  .buy-button:hover {
+    background-color: #8000ff;
+  }
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .social-icon {
+    font-size: 2em;
+    color:  #9933ff;
+    transition: color 0.3s;
+  }
+  .social-icon:hover {
+    color: #77ff33;
+  }
+  .track-list {
+    background-color: rgba(23, 0, 46, 0.85);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 40px;
+  }
+  .track-list h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .tracks {
+    columns: 2;
+    column-gap: 40px;
+  }
+  .track {
+    margin-bottom: 10px;
+  }
+  #ascii-art {
+      font-size: 0.65vw;
+      line-height: 1;
+      letter-spacing: 0;
+      font-family: 'Courier New', monospace;
+      white-space: pre;
+      text-align: center;
+      color: #8A2BE2;
+      text-shadow: 0 0 5px #9400D3;
+      animation: pulsate 5s infinite alternate;
+      margin: 40px 0;
+  }
+  @keyframes pulsate {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+  }
+  .color-1 { color: #FF00FF; }
+  .color-2 { color: #BA55D3; }
+  .color-3 { color: #9932CC; }
+  .color-4 { color: #8A2BE2; }
+  .color-5 { color: #9400D3; }
+  .color-6 { color: #8B008B; }
+  .color-7 { color: #800080; }
+  .color-8 { color: #4B0082; }
+  .color-9 { color: #483D8B; }
+  .color-10 { color: #6A5ACD; }
+  .color-11 { color: #7B68EE; }
+  .color-12 { color: #9370DB; }
+  .color-13 { color: #8B4513; }
+  .color-14 { color: #D2691E; }
+  .color-15 { color: #CD853F; }
+  .color-16 { color: #DDA0DD; }
+  .color-17 { color: #DA70D6; }
+  .color-18 { color: #FF69B4; }
+  .color-19 { color: #FF1493; }
+  .color-20 { color: #C71585; }
+  .color-21 { color: #DB7093; }
+  .color-22 { color: #FF00FF; }
+  .color-23 { color: #EE82EE; }
+  .color-24 { color: #DA70D6; }
+</style>
+<script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+<canvas id="matrix"></canvas>
+<div class="container">
+  <header>
+    <div id="ascii-art">
+      <span class="color-1">  ██████ </span><span class="color-6"> ██    ██ </span><span class="color-11">██████  </span><span class="color-16">██████  </span><span class="color-21">██      </span><span class="color-2">███████        </span><span class="color-6">██████   ██████  ████████</span>        </span><span class="color-7">███    ███ </span><span class="color-12"> █████  </span><span class="color-17">████████ </span><span class="color-22">██████  </span><span class="color-3">██ </span><span class="color-8">██   ██   </span>
+      <span class="color-2">  ██   ██</span><span class="color-7"> ██    ██ </span><span class="color-12">██   ██ </span><span class="color-17">██   ██ </span><span class="color-22">██      </span><span class="color-3">██             </span><span class="color-7">██   ██ ██    ██    ██   </span>        </span><span class="color-8">████  ████ </span><span class="color-13">██   ██ </span><span class="color-18">   ██    </span><span class="color-23">██   ██ </span><span class="color-4">    </span><span class="color-9">██ ██    </span>
+      <span class="color-3">  ██████ </span><span class="color-8"> ██    ██ </span><span class="color-13">██████  </span><span class="color-18">██████  </span><span class="color-23">██      </span><span class="color-4">█████          </span><span class="color-8">██   ██ ██    ██    ██   </span>        </span><span class="color-9">██ ████ ██ </span><span class="color-14">███████ </span><span class="color-19">   ██    </span><span class="color-24">██████  </span><span class="color-5">██   </span><span class="color-10">███     </span>
+      <span class="color-4">  ██     </span><span class="color-9"> ██    ██ </span><span class="color-14">██   ██ </span><span class="color-19">██      </span><span class="color-24">██      </span><span class="color-5">██             </span><span class="color-9">██   ██ ██    ██    ██   </span>        </span><span class="color-10">██  ██  ██ </span><span class="color-15">██   ██ </span><span class="color-20">   ██    </span><span class="color-1">██   ██ </span><span class="color-6">██  </span><span class="color-11">██ ██    </span>
+      <span class="color-5">  ██     </span><span class="color-10">  ██████ </span><span class="color-15"> ██   ██ </span><span class="color-20">██      </span><span class="color-1">███████ </span><span class="color-6">███████        </span><span class="color-10">██████   ██████     ██   </span>        </span><span class="color-11">██      ██ </span><span class="color-16">██   ██ </span><span class="color-21">   ██    </span><span class="color-2">██   ██ </span><span class="color-7">██ </span><span class="color-12">██   ██   </span>
+    </div>
+  </header>
+  <div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/JKe4aBbAEoI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+  <div class="social-links">
+    <a href="https://www.facebook.com/purpledotmatrix" class="social-icon" aria-label="Facebook"><i data-feather="facebook"></i></a>
+    <a href="https://www.instagram.com/purple.dot.matrix" class="social-icon" aria-label="Instagram"><i data-feather="instagram"></i></a>
+    <a href="https://twitter.com/purpledotmatrix" class="social-icon" aria-label="Twitter"><i data-feather="twitter"></i></a>
+    <a href="https://www.youtube.com/@purpledotmatrix" class="social-icon" aria-label="YouTube"><i data-feather="youtube"></i></a>
+  </div>
+  <script>
+    feather.replace();
+  </script>
+  <div class="album-info">
+    <h2>New Album: Toner Trap</h2>
+    <a href="DJ-Console.html" target="_blank">
+      <div class="album-cover"></div>
+    </a>
+    <p></p>
+    <div class="buy-links">
+      <a href="https://open.spotify.com/album/2GzlYqNGhdiq37tPpzueiI" class="buy-button">Listen on Spotify</a>
+      <a href="https://music.apple.com/ca/album/toner-trap-hip-hop-instrumentals/1760830267" class="buy-button">Buy on iTunes</a>
+    </div>
+  </div>
+  <div class="track-list">
+    <h2>Toner Trap - Track List</h2>
+    <div class="tracks">
+      <div class="track" data-file="Unlimited Coin Refund.mp3">1. Unlimited Coin Refund</div><div class="track" data-file="Paging Motorola 424.mp3">2. Paging Motorola 424</div><div class="track" data-file="Sauga Sega Saga.mp3">3. Sauga Sega Saga</div><div class="track" data-file="VIC-20 Purple Mixtapes.mp3">4. VIC-20 Purple Mixtapes</div><div class="track" data-file="Efnet Society.mp3">5. Efnet Society</div><div class="track" data-file="Voice Mail Party Line.mp3">6. Voice Mail Party Line</div><div class="track" data-file="The Whistling Phreaker.mp3">7. The Whistling Phreaker</div><div class="track" data-file="Homebrewed Parameters.mp3">8. Homebrewed Parameters</div><div class="track" data-file="Long Distance Calling.mp3">9. Long Distance Calling</div><div class="track" data-file="Majestic Prophet-5.mp3">10. Majestic Prophet-5</div><div class="track" data-file="Peer-to-Peer.mp3">11. Peer-to-Peer</div><div class="track" data-file="Temporal Lobe Probe.mp3">12. Temporal Lobe Probe</div><div class="track" data-file="Woot! Lifestyle.mp3">13. Woot! Lifestyle</div><div class="track" data-file="Caffeinated My Beige Box.mp3">14. Caffeinated My Beige Box</div><div class="track" data-file="Man-in-the-Middle.mp3">15. Man-in-the-Middle</div><div class="track" data-file="2020 Coleco Vision.mp3">16. 2020 Coleco Vision</div><div class="track" data-file="Captain Crunch Whistles.mp3">17. Captain Crunch Whistles</div><div class="track" data-file="Pulse Dialing.mp3">18. Pulse Dialing</div><div class="track" data-file="SS7 Routing Tones.mp3">19. SS7 Routing Tones</div><div class="track" data-file="Crocodile Clip Crunk.mp3">20. Crocodile Clip Crunk</div><div class="track" data-file="Purple ACiD Art.mp3">21. Purple ACiD Art</div><div class="track" data-file="Uptown Bodega Top Ups.mp3">22. Uptown Bodega Top Ups</div><div class="track" data-file="Within Signal Range.mp3">23. Within Signal Range</div><div class="track" data-file="Loopback Prophiles.mp3">24. Loopback Prophiles</div><div class="track" data-file="Infinity Transmitter.mp3">25. Infinity Transmitter</div><div class="track" data-file="Neon Inkjet Icons.mp3">26. Neon Inkjet Icons</div><div class="track" data-file="Radio Shack Stacked.mp3">27. Radio Shack Stacked</div><div class="track" data-file="Missing Autoexec.mp3">28. Missing Autoexec</div><div class="track" data-file="Melody Cheat Codes.mp3">29. Melody Cheat Codes</div><div class="track" data-file="Reversed Polarity.mp3">30. Reversed Polarity</div><div class="track" data-file="Cyberpunk Phonk.mp3">31. Cyberpunk Phonk</div><div class="track" data-file="Urban Phonics.mp3">32. Urban Phonics</div><div class="track" data-file="Meridian Junkmail.mp3">33. Meridian Junkmail</div><div class="track" data-file="Slot-Edge Connector.mp3">34. Slot-Edge Connector</div><div class="track" data-file="Prank Calling 241.mp3">35. Prank Calling 241</div><div class="track" data-file="Escalated on Esplanade.mp3">36. Escalated on Esplanade</div><div class="track" data-file="Street View Dot Density.mp3">37. Street View Dot Density</div><div class="track" data-file="Aliens Ate My Babysitter.mp3">38. Aliens Ate My Babysitter</div><div class="track" data-file="13 Push Buttons.mp3">39. 13 Push Buttons</div><div class="track" data-file="DCC Maxcps 999.mp3">40. DCC Maxcps 999</div><div class="track" data-file="ASCII 4 RZR Warez.mp3">41. ASCII 4 RZR Warez</div><div class="track" data-file="Dumpster Diving.mp3">42. Dumpster Diving</div><div class="track" data-file="PCMCIA Wardriving.mp3">43. PCMCIA Wardriving</div><div class="track" data-file="Portable Geotagging.mp3">44. Portable Geotagging</div><div class="track" data-file="ROM Banks Extracted.mp3">45. ROM Banks Extracted</div><div class="track" data-file="Liquid Phunk.mp3">46. Liquid Phunk</div><div class="track" data-file="System 4 Blue Box.mp3">47. System 4 Blue Box</div><div class="track" data-file="FidoNet Ghostlined.mp3">48. FidoNet Ghostlined</div><div class="track" data-file="Written in Pascal.mp3">49. Written in Pascal</div><div class="track" data-file="Directory Assistance.mp3">50. Directory Assistance</div>
+    </div>
+  </div>
+</div>
+<audio id="audio-player" controls style="display:none;"></audio>
+<script>
+const canvas = document.getElementById('matrix');
+const ctx = canvas.getContext('2d');
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+let katakana = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヰヱヲン';
+let latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+let nums = '0123456789';
+let alphabet = katakana + latin + nums;
+let fontSize = 16;
+let columns = canvas.width / fontSize;
+let rainDrops = [];
+for (let x = 0; x < columns; x++) { rainDrops[x] = 1; }
+let baseColor = '#500351';
+let specialColor = '#00FF00';
+let speed = 100;
+let paused = false;
+let fadeSpeed = 0.1;
+let characterCount = 0;
+function draw() {
+    if (paused) return;
+    ctx.fillStyle = `rgba(0, 0, 0, ${fadeSpeed})`;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < rainDrops.length; i++) {
+        let text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+        // Switch color every 88th character
+        if (characterCount % 88 === 0) {
+            ctx.fillStyle = specialColor;
+        } else {
+            ctx.fillStyle = baseColor;
+        }
+        ctx.font = fontSize + 'px monospace';
+        ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+        if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            rainDrops[i] = 0;
+        }
+        rainDrops[i]++;
+        characterCount++;
+    }
+}
+let interval = setInterval(draw, speed);
+window.addEventListener('resize', () => {
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    columns = canvas.width / fontSize;
+    rainDrops = [];
+    for (let x = 0; x < columns; x++) { rainDrops[x] = 1; }
+});
+document.addEventListener('keydown', (e) => {
+    if (e.key === ' ') {
+        paused = !paused;
+    }
+    if (e.key === 'ArrowUp') {
+        fadeSpeed = Math.min(1, fadeSpeed + 0.05);
+    }
+    if (e.key === 'ArrowDown') {
+        fadeSpeed = Math.max(0.05, fadeSpeed - 0.05);
+    }
+    if (e.key === 'ArrowRight') {
+        speed = Math.max(10, speed - 10);
+        clearInterval(interval);
+        interval = setInterval(draw, speed);
+    }
+    if (e.key === 'ArrowLeft') {
+        speed = Math.min(500, speed + 10);
+        clearInterval(interval);
+        interval = setInterval(draw, speed);
+    }
+});
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+      const asciiArt = document.getElementById('ascii-art');
+      function changeColors() {
+          const spans = asciiArt.getElementsByTagName('span');
+          for (let span of spans) {
+              const randomColorClass = `color-${Math.floor(Math.random() * 24) + 1}`;
+              span.className = randomColorClass;
+          }
+      }
+      setInterval(changeColors, 3000);
+      asciiArt.addEventListener('mousemove', (e) => {
+          const rect = asciiArt.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          asciiArt.style.textShadow = `
+              ${x / 90}px ${y / 90}px 5px rgba(50,0,50,0.5),
+              ${-x / 90}px ${-y / 90}px 5px rgba(205,0,205,0.5)
+          `;
+      });
+      asciiArt.addEventListener('mouseleave', () => {
+          asciiArt.style.textShadow = '0 0 5px #9400D3';
+      });
+  });
+</script>
+<script>
+  const tracks = document.querySelectorAll('.track');
+  const audioPlayer = document.getElementById('audio-player');
+  tracks.forEach(track => {
+    track.addEventListener('click', () => {
+      const file = track.getAttribute('data-file');
+      audioPlayer.src = `m_mp3/` + file;
+      audioPlayer.style.display = 'block';
+      audioPlayer.play();
+    });
+  });
+</script>
+</body></html>
